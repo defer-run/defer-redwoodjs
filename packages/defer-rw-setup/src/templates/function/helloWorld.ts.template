@@ -1,0 +1,11 @@
+import { defer } from "src/jobs/clients/defer";
+
+const helloWorld = async () => {
+  // TODO
+};
+
+export default defer(helloWorld, {
+  // retry: 5,
+  // concurrency: 10,
+  // maxDuration: 5 * 60 // in seconds
+});
