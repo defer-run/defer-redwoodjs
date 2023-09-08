@@ -5,7 +5,7 @@ import { getPaths, writeFile } from "@redwoodjs/cli-helpers";
 import type { FunctionOptions } from "./command";
 
 export const tasks = (options: FunctionOptions) => {
-  const PACKAGE_JSON_PATH = path.join(getPaths().base, "package.json");
+  const PACKAGE_JSON_PATH = path.join(getPaths().api.base, "package.json");
   const SRC_DEFER_PATH = path.join(getPaths().api.src, "jobs", "defer");
   const SRC_DEFER_CLIENT_PATH_FILE = path.join(
     getPaths().api.src,
@@ -30,7 +30,7 @@ export const tasks = (options: FunctionOptions) => {
           const pkg = JSON.parse(fs.readFileSync(PACKAGE_JSON_PATH, "utf-8"));
 
           if (
-            !pkg.dependencies.includes("@defer/client") ||
+            !(pkg.dependencies || {}).includes("@defer/client") ||
             !fs.existsSync(SRC_DEFER_CLIENT_PATH_FILE)
           ) {
             throw new Error(
