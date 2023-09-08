@@ -30,7 +30,7 @@ export const tasks = (options: FunctionOptions) => {
           const pkg = JSON.parse(fs.readFileSync(PACKAGE_JSON_PATH, "utf-8"));
 
           if (
-            !(pkg.dependencies || {}).includes("@defer/client") ||
+            !Object.keys(pkg.dependencies || {}).includes("@defer/client") ||
             !fs.existsSync(SRC_DEFER_CLIENT_PATH_FILE)
           ) {
             throw new Error(

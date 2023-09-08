@@ -14,6 +14,8 @@ function isErrorWithExitCode(e: unknown): e is ErrorWithExitCode {
 export const handler = async ({ cwd, force, name }: FunctionOptions) => {
   const tasks = setupPluginTasks({ cwd, force, name });
 
+  // TODO: check and format `name`
+
   try {
     await tasks.run();
   } catch (e) {
