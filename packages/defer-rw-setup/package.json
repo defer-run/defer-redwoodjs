@@ -34,7 +34,8 @@
       "copy": [
         "src/templates/cron/sendMondayNewsletter.template",
         "src/templates/function/helloWorld.ts.template",
-        "src/templates/plugin/helloWorld.ts.template"
+        "src/templates/plugin/helloWorld.ts.template",
+        "src/templates/plugin/client.ts.template"
       ]
     }
   },
