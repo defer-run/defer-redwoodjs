@@ -1,5 +1,5 @@
 {
-  "name": "@defer/rw-setup",
+  "name": "@defer/redwood",
   "version": "0.0.0",
   "description": "Setup Defer in RedwoodJS",
   "main": "dist/cjs/index.js",
@@ -68,7 +68,8 @@
     "fs-extra": "^11.1.1",
     "prompts": "^2.4.2",
     "yargs": "^17.7.2",
-    "yargs-parser": "^21.1.1"
+    "yargs-parser": "^21.1.1",
+    "humanize-string": "3.0.0"
   },
   "devDependencies": {
     "@types/findup-sync": "^4.0.2",

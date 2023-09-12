@@ -15,6 +15,7 @@ export const description = "Add a Defer background function";
 
 export const builder = (yargs: Yargs.Argv<BaseOptions>) => {
   return yargs
+    .commandDir("function")
     .option("force", {
       alias: "f",
       default: false,

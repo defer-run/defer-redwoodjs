@@ -1,3 +1,4 @@
+#!/usr/bin/env node
 /* eslint-disable prefer-const */
 import fs from "fs";
 import path from "path";
@@ -61,4 +62,5 @@ yargs
     description: "Working directory to use (where `redwood.toml` is located)",
   })
   // default command
-  .command("$0", pluginDescription, pluginBuilder, pluginHandler);
+  .command("$0", pluginDescription, pluginBuilder, pluginHandler)
+  .parse();

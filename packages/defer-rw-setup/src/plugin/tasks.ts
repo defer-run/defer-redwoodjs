@@ -124,13 +124,13 @@ const tomlString = `
 [experimental.cli]
   autoInstall = false
   [[experimental.cli.plugins]]
-    package = "@defer/rw-setup"`;
+    package = "@defer/redwood"`;
 
 export const updateTomlConfig = () => {
   const redwoodTomlPath = getConfigPath();
   const configContent = fs.readFileSync(redwoodTomlPath, "utf-8");
 
-  if (!configContent.includes("@defer/rw-setup")) {
+  if (!configContent.includes("@defer/redwood")) {
     writeFile(redwoodTomlPath, configContent.concat(tomlString), {
       existingFiles: "OVERWRITE",
     });

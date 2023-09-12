@@ -2,6 +2,8 @@ import path from "path";
 import { Listr } from "listr2";
 import fs from "fs-extra";
 import { getPaths, writeFile } from "@redwoodjs/cli-helpers";
+import humanize from "humanize-string";
+
 import type { FunctionOptions } from "./command";
 
 export const tasks = (options: FunctionOptions) => {
@@ -40,7 +42,7 @@ export const tasks = (options: FunctionOptions) => {
         },
       },
       {
-        title: `Create ${options.name} background function ...`,
+        title: `Create ${humanize(options.name!)} background function ...`,
         task: () => {
           createBackgroundFunctionTask({
             commandPaths,
@@ -78,8 +80,8 @@ export const createBackgroundFunctionTask = ({
   );
 
   return writeFile(
-    path.join(commandPaths["SRC_DEFER_PATH"]!, `${name}.ts`),
-    deferHelloWorldTemplate.replace(/helloWorld/g, name),
+    path.join(commandPaths["SRC_DEFER_PATH"]!, `${humanize(name)}.ts`),
+    deferHelloWorldTemplate.replace(/helloWorld/g, humanize(name)),
     {
       existingFiles,
     }

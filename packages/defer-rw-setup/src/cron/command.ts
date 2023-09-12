@@ -15,6 +15,7 @@ export const description = "Add a Defer CRON";
 
 export const builder = (yargs: Yargs.Argv<BaseOptions>) => {
   return yargs
+    .commandDir("cron")
     .option("force", {
       alias: "f",
       default: false,
