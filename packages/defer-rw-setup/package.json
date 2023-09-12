@@ -20,7 +20,7 @@
     "node": ">= 16.0.0"
   },
   "bin": {
-    "defer-setup-redwoodjs": "./dist/cjs/index.js"
+    "defer-setup-redwoodjs": "./dist/cjs/cli.js"
   },
   "publishConfig": {
     "directory": "dist",

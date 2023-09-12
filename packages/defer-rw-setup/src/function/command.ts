@@ -1,6 +1,6 @@
 import type Yargs from "yargs";
 
-interface BaseOptions {
+export interface BaseOptions {
   cwd: string | undefined;
 }
 
@@ -8,6 +8,8 @@ export interface FunctionOptions extends BaseOptions {
   force: boolean;
   name?: string;
 }
+
+export const command = "function <name>";
 
 export const description = "Add a Defer background function";
 

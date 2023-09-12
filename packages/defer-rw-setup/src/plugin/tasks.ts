@@ -3,6 +3,8 @@ import execa from "execa";
 import { Listr } from "listr2";
 import fs from "fs-extra";
 import { getPaths, writeFile } from "@redwoodjs/cli-helpers";
+import { getConfigPath } from "@redwoodjs/project-config";
+
 import type { ForceOptions } from "./command";
 
 export const tasks = (options: ForceOptions) => {
@@ -34,6 +36,12 @@ export const tasks = (options: ForceOptions) => {
                 }
               : {}
           );
+        },
+      },
+      {
+        title: "Adding config to redwood.toml...",
+        task: () => {
+          updateTomlConfig();
         },
       },
       {
@@ -110,4 +118,21 @@ export const configureDeferClient = ({
       existingFiles,
     }
   );
+};
+
+const tomlString = `
+[experimental.cli]
+  autoInstall = false
+  [[experimental.cli.plugins]]
+    package = "@defer/rw-setup"`;
+
+export const updateTomlConfig = () => {
+  const redwoodTomlPath = getConfigPath();
+  const configContent = fs.readFileSync(redwoodTomlPath, "utf-8");
+
+  if (!configContent.includes("@defer/rw-setup")) {
+    writeFile(redwoodTomlPath, configContent.concat(tomlString), {
+      existingFiles: "OVERWRITE",
+    });
+  }
 };
