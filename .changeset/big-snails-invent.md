@@ -1,5 +1,5 @@
 ---
-"@defer/rw-setup": patch
+"@defer/redwood": patch
 ---
 
 Initial release
