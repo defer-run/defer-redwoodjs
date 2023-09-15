@@ -125,15 +125,18 @@ export const updateTomlConfig = () => {
   const configContent = fs.readFileSync(redwoodTomlPath, "utf-8");
 
   if (!configContent.includes("@defer/redwood")) {
-    if (configContent.includes("  [experimental.cli]")) {
+    if (configContent.includes("[experimental.cli]")) {
       if (configContent.includes("  [[experimental.cli.plugins]]")) {
         writeFile(
           redwoodTomlPath,
-          configContent.concat(`
+          configContent.replace(
+            "  [[experimental.cli.plugins]]",
+            `
   [[experimental.cli.plugins]]
     package = "@defer/redwood"
 
-  [[experimental.cli.plugins]]`),
+  [[experimental.cli.plugins]]`
+          ),
           {
             existingFiles: "OVERWRITE",
           }
@@ -145,11 +148,14 @@ export const updateTomlConfig = () => {
         ) {
           writeFile(
             redwoodTomlPath,
-            configContent.concat(`
+            configContent.replace(
+              "[experimental.cli]",
+              `
 [experimental.cli]
 autoInstall = true
 [[experimental.cli.plugins]]
-  package = "@defer/redwood"`),
+  package = "@defer/redwood"`
+            ),
             {
               existingFiles: "OVERWRITE",
             }
@@ -157,11 +163,14 @@ autoInstall = true
         } else {
           writeFile(
             redwoodTomlPath,
-            configContent.concat(`
+            configContent.replace(
+              "[experimental.cli]",
+              `
 [experimental.cli]
 autoInstall = false
 [[experimental.cli.plugins]]
-  package = "@defer/redwood"`),
+  package = "@defer/redwood"`
+            ),
             {
               existingFiles: "OVERWRITE",
             }
