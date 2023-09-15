@@ -149,10 +149,12 @@ export const updateTomlConfig = () => {
           writeFile(
             redwoodTomlPath,
             configContent.replace(
-              "[experimental.cli]",
+              `[experimental.cli]
+  autoInstall = true`,
               `
 [experimental.cli]
   autoInstall = true
+
   [[experimental.cli.plugins]]
     package = "@defer/redwood"`
             ),
@@ -164,10 +166,12 @@ export const updateTomlConfig = () => {
           writeFile(
             redwoodTomlPath,
             configContent.replace(
-              "[experimental.cli]",
+              `[experimental.cli]
+  autoInstall = false`,
               `
 [experimental.cli]
   autoInstall = false
+
   [[experimental.cli.plugins]]
     package = "@defer/redwood"`
             ),
@@ -183,6 +187,7 @@ export const updateTomlConfig = () => {
         configContent.concat(`
 [experimental.cli]
   autoInstall = false
+
   [[experimental.cli.plugins]]
     package = "@defer/redwood"`),
         {
