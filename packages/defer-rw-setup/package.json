@@ -67,7 +67,6 @@
     "@redwoodjs/cli-helpers": "^6.1.0",
     "findup-sync": "^5.0.0",
     "fs-extra": "^11.1.1",
-    "prompts": "^2.4.2",
     "yargs": "^17.7.2",
     "yargs-parser": "^21.1.1",
     "humanize-string": "3.0.0"
@@ -75,9 +74,7 @@
   "devDependencies": {
     "@types/findup-sync": "^4.0.2",
     "@types/fs-extra": "^11.0.1",
-    "@types/prompts": "^2.4.4",
     "@types/yargs": "^17.0.24",
-    "@types/yargs-parser": "^21.0.0",
-    "prompts": "^2.4.2"
+    "@types/yargs-parser": "^21.0.0"
   }
 }
