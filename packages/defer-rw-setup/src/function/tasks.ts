@@ -1,8 +1,9 @@
 import path from "path";
 import { Listr } from "listr2";
 import fs from "fs-extra";
-import { getPaths, writeFile } from "@redwoodjs/cli-helpers";
 import humanize from "humanize-string";
+import pkg from "@redwoodjs/cli-helpers";
+const { getPaths, writeFile } = pkg;
 
 import type { FunctionOptions } from "./command";
 

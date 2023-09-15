@@ -120,19 +120,66 @@ export const configureDeferClient = ({
   );
 };
 
-const tomlString = `
-[experimental.cli]
-  autoInstall = false
-  [[experimental.cli.plugins]]
-    package = "@defer/redwood"`;
-
 export const updateTomlConfig = () => {
   const redwoodTomlPath = getConfigPath();
   const configContent = fs.readFileSync(redwoodTomlPath, "utf-8");
 
   if (!configContent.includes("@defer/redwood")) {
-    writeFile(redwoodTomlPath, configContent.concat(tomlString), {
-      existingFiles: "OVERWRITE",
-    });
+    if (configContent.includes("  [experimental.cli]")) {
+      if (configContent.includes("  [[experimental.cli.plugins]]")) {
+        writeFile(
+          redwoodTomlPath,
+          configContent.concat(`
+  [[experimental.cli.plugins]]
+    package = "@defer/redwood"
+
+  [[experimental.cli.plugins]]`),
+          {
+            existingFiles: "OVERWRITE",
+          }
+        );
+      } else {
+        if (
+          configContent.match(`[experimental.cli]
+  autoInstall = true`)
+        ) {
+          writeFile(
+            redwoodTomlPath,
+            configContent.concat(`
+[experimental.cli]
+autoInstall = true
+[[experimental.cli.plugins]]
+  package = "@defer/redwood"`),
+            {
+              existingFiles: "OVERWRITE",
+            }
+          );
+        } else {
+          writeFile(
+            redwoodTomlPath,
+            configContent.concat(`
+[experimental.cli]
+autoInstall = false
+[[experimental.cli.plugins]]
+  package = "@defer/redwood"`),
+            {
+              existingFiles: "OVERWRITE",
+            }
+          );
+        }
+      }
+    } else {
+      writeFile(
+        redwoodTomlPath,
+        configContent.concat(`
+[experimental.cli]
+  autoInstall = false
+  [[experimental.cli.plugins]]
+    package = "@defer/redwood"`),
+        {
+          existingFiles: "OVERWRITE",
+        }
+      );
+    }
   }
 };
