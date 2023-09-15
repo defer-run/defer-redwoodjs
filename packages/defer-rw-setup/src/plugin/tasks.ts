@@ -152,9 +152,9 @@ export const updateTomlConfig = () => {
               "[experimental.cli]",
               `
 [experimental.cli]
-autoInstall = true
-[[experimental.cli.plugins]]
-  package = "@defer/redwood"`
+  autoInstall = true
+  [[experimental.cli.plugins]]
+    package = "@defer/redwood"`
             ),
             {
               existingFiles: "OVERWRITE",
@@ -167,9 +167,9 @@ autoInstall = true
               "[experimental.cli]",
               `
 [experimental.cli]
-autoInstall = false
-[[experimental.cli.plugins]]
-  package = "@defer/redwood"`
+  autoInstall = false
+  [[experimental.cli.plugins]]
+    package = "@defer/redwood"`
             ),
             {
               existingFiles: "OVERWRITE",
