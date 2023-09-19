@@ -186,7 +186,7 @@ export const updateTomlConfig = () => {
         redwoodTomlPath,
         configContent.concat(`
 [experimental.cli]
-  autoInstall = false
+  autoInstall = true
 
   [[experimental.cli.plugins]]
     package = "@defer/redwood"`),
