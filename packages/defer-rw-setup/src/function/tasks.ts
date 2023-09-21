@@ -1,7 +1,7 @@
 import path from "path";
 import { Listr } from "listr2";
 import fs from "fs-extra";
-import humanize from "humanize-string";
+import { camelCase } from "camel-case";
 import pkg from "@redwoodjs/cli-helpers";
 import "../dirname.js";
 const { getPaths, writeFile } = pkg;
@@ -44,7 +44,7 @@ export const tasks = (options: FunctionOptions) => {
         },
       },
       {
-        title: `Create ${humanize(options.name!)} background function ...`,
+        title: `Create ${camelCase(options.name!)} background function ...`,
         task: () => {
           createBackgroundFunctionTask({
             commandPaths,
@@ -81,8 +81,8 @@ export const createBackgroundFunctionTask = ({
   );
 
   return writeFile(
-    path.join(commandPaths["SRC_DEFER_PATH"]!, `${humanize(name)}.ts`),
-    deferHelloWorldTemplate.replace(/helloWorld/g, humanize(name)),
+    path.join(commandPaths["SRC_DEFER_PATH"]!, `${camelCase(name)}.ts`),
+    deferHelloWorldTemplate.replace(/helloWorld/g, camelCase(name)),
     {
       existingFiles,
     }

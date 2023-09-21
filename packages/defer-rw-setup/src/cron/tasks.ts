@@ -1,7 +1,7 @@
 import path from "path";
 import { Listr } from "listr2";
 import fs from "fs-extra";
-import humanize from "humanize-string";
+import { camelCase } from "camel-case";
 import "../dirname.js";
 import pkg from "@redwoodjs/cli-helpers";
 const { getPaths, writeFile } = pkg;
@@ -44,7 +44,7 @@ export const tasks = (options: FunctionOptions) => {
         },
       },
       {
-        title: `Create ${humanize(options.name!)} CRON ...`,
+        title: `Create ${camelCase(options.name!)} CRON ...`,
         task: () => {
           createCronTask({
             commandPaths,
@@ -81,8 +81,8 @@ export const createCronTask = ({
   );
 
   return writeFile(
-    path.join(commandPaths["SRC_DEFER_PATH"]!, `${humanize(name)}.ts`),
-    deferCronTemplate.replace(/sendMondayNewsletter/g, humanize(name)),
+    path.join(commandPaths["SRC_DEFER_PATH"]!, `${camelCase(name)}.ts`),
+    deferCronTemplate.replace(/sendMondayNewsletter/g, camelCase(name)),
     {
       existingFiles,
     }
