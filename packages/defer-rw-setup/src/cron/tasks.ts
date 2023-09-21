@@ -73,7 +73,6 @@ export const createCronTask = ({
     path.resolve(
       __dirname,
       "..",
-      "..",
       "templates",
       "cron",
       "sendMondayNewsletter.template"

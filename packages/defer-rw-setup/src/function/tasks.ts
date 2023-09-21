@@ -73,7 +73,6 @@ export const createBackgroundFunctionTask = ({
     path.resolve(
       __dirname,
       "..",
-      "..",
       "templates",
       "function",
       "helloWorld.ts.template"

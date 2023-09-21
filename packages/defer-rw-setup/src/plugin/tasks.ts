@@ -77,7 +77,6 @@ export const addDeferHelloWorldExampleTask = ({
     path.resolve(
       __dirname,
       "..",
-      "..",
       "templates",
       "plugin",
       "helloWorld.ts.template"
@@ -102,14 +101,7 @@ export const configureDeferClient = ({
   existingFiles: "OVERWRITE" | "FAIL";
 }) => {
   const deferHelloWorldTemplate = fs.readFileSync(
-    path.resolve(
-      __dirname,
-      "..",
-      "..",
-      "templates",
-      "plugin",
-      "client.ts.template"
-    ),
+    path.resolve(__dirname, "..", "templates", "plugin", "client.ts.template"),
     "utf-8"
   );
 
