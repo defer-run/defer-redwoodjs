@@ -3,9 +3,8 @@ import execa from "execa";
 import { Listr } from "listr2";
 import fs from "fs-extra";
 import { getConfigPath } from "@redwoodjs/project-config";
-import pkg from "@redwoodjs/cli-helpers";
+import { getPaths, writeFile } from "@redwoodjs/cli-helpers";
 import "../dirname.js";
-const { getPaths, writeFile } = pkg;
 
 import type { ForceOptions } from "./command";
 
