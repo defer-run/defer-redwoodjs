@@ -1,4 +1,5 @@
-import { colors } from "@redwoodjs/cli-helpers";
+import pkg from "@redwoodjs/cli-helpers";
+const { colors } = pkg;
 
 import { tasks as setupPluginTasks } from "./tasks.js";
 import { ForceOptions } from "./command.js";
