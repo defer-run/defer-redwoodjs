@@ -2,7 +2,7 @@ import path from "path";
 import { Listr } from "listr2";
 import fs from "fs-extra";
 import humanize from "humanize-string";
-import "../dirname";
+import "../dirname.js";
 import pkg from "@redwoodjs/cli-helpers";
 const { getPaths, writeFile } = pkg;
 
