@@ -2,7 +2,8 @@ import path from "path";
 import { Listr } from "listr2";
 import fs from "fs-extra";
 import { camelCase } from "camel-case";
-import { getPaths, writeFile } from "@redwoodjs/cli-helpers";
+import pkg from "@redwoodjs/cli-helpers";
+const { getPaths, writeFile } = pkg;
 
 import type { FunctionOptions } from "./command";
 
