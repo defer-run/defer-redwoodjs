@@ -1,0 +1,33 @@
+{
+  "name": "defer-rw-setup",
+  "version": "0.0.0",
+  "description": "Setup Defer in RedwoodJS",
+  "main": "index.js",
+  "repository": "git@github.com:defer-run/defer-setup-redwoodjs.git",
+  "author": "Charly Poly <charly@defer.run>",
+  "license": "MIT",
+  "private": true,
+  "engines": {
+    "node": ">= 16.0.0"
+  },
+  "scripts": {
+    "prebuild": "rimraf dist/ .bob/ tsconfig.tsbuildinfo",
+    "build": "bob build",
+    "release": "changeset publish",
+    "lint": "eslint packages/**/*.ts"
+  },
+  "devDependencies": {
+    "@changesets/changelog-github": "^0.4.8",
+    "@changesets/cli": "^2.26.2",
+    "@typescript-eslint/eslint-plugin": "^6.4.1",
+    "@typescript-eslint/parser": "^6.4.1",
+    "bob-the-bundler": "^7.0.1",
+    "eslint": "^8.47.0",
+    "eslint-config-prettier": "^9.0.0",
+    "rimraf": "^5.0.1",
+    "typescript": "^5.2.2"
+  },
+  "workspaces": [
+    "packages/*"
+  ]
+}
