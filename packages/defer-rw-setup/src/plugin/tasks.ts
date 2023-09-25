@@ -4,7 +4,6 @@ import { Listr } from "listr2";
 import fs from "fs-extra";
 import { getConfigPath } from "@redwoodjs/project-config";
 import { getPaths, writeFile } from "@redwoodjs/cli-helpers";
-import "../dirname.js";
 
 import type { ForceOptions } from "./command";
 

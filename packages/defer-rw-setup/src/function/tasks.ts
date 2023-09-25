@@ -3,7 +3,6 @@ import { Listr } from "listr2";
 import fs from "fs-extra";
 import { camelCase } from "camel-case";
 import { getPaths, writeFile } from "@redwoodjs/cli-helpers";
-import "../dirname.js";
 
 import type { FunctionOptions } from "./command";
 
