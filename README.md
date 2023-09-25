@@ -25,4 +25,16 @@
 
 ## Get started
 
-_TODO_
+1. Configure your Redwood project by running:
+
+```bash
+yarn rw setup package @defer/redwood
+```
+
+2. Then, generate a background function or CRON by running:
+
+```bash
+yarn rw @defer cron sendWeeklyNotifications
+
+yarn rw @defer function processStripeWebhook
+```
