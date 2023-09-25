@@ -30,16 +30,6 @@
   "buildOptions": {
     "input": "./src/index.ts"
   },
-  "bob": {
-    "build": {
-      "copy": [
-        "templates/cron/sendMondayNewsletter.template",
-        "templates/function/helloWorld.ts.template",
-        "templates/plugin/helloWorld.ts.template",
-        "templates/plugin/client.ts.template"
-      ]
-    }
-  },
   "type": "module",
   "module": "dist/esm/index.js",
   "typings": "dist/typings/index.d.ts",

@@ -1,7 +1,0 @@
-import { defer } from '@defer/client'
-
-async function sendMondayNewsletter() {
-  // TODO
-}
-
-export default defer.cron(sendMondayNewsletter, '0 0 * * MON')

@@ -68,16 +68,19 @@ export const createBackgroundFunctionTask = ({
 }) => {
   fs.ensureDirSync(commandPaths["SRC_DEFER_PATH"]!);
 
-  const deferHelloWorldTemplate = fs.readFileSync(
-    path.resolve(
-      __dirname,
-      "..",
-      "templates",
-      "function",
-      "helloWorld.ts.template"
-    ),
-    "utf-8"
-  );
+  const deferHelloWorldTemplate = `import { defer } from 'src/jobs/clients/defer'
+
+  const helloWorld = async () => {
+    // TODO
+  }
+  
+  export default defer(helloWorld, {
+    // retry: 5,
+    // concurrency: 10,
+    // maxDuration: 5 * 60 // in seconds
+  })
+
+`;
 
   return writeFile(
     path.join(commandPaths["SRC_DEFER_PATH"]!, `${camelCase(name)}.ts`),

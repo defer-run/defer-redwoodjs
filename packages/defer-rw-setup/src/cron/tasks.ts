@@ -68,16 +68,15 @@ export const createCronTask = ({
 }) => {
   fs.ensureDirSync(commandPaths["SRC_DEFER_PATH"]!);
 
-  const deferCronTemplate = fs.readFileSync(
-    path.resolve(
-      __dirname,
-      "..",
-      "templates",
-      "cron",
-      "sendMondayNewsletter.template"
-    ),
-    "utf-8"
-  );
+  const deferCronTemplate = `import { defer } from '@defer/client'
+
+  async function sendMondayNewsletter() {
+    // TODO
+  }
+  
+  export default defer.cron(sendMondayNewsletter, '0 0 * * MON')
+
+`;
 
   return writeFile(
     path.join(commandPaths["SRC_DEFER_PATH"]!, `${camelCase(name)}.ts`),
