@@ -3,10 +3,9 @@ import execa from "execa";
 import { Listr } from "listr2";
 import fs from "fs-extra";
 import { getConfigPath } from "@redwoodjs/project-config";
-import * as pkg from "@redwoodjs/cli-helpers";
-const { getPaths, writeFile } = pkg;
 
 import type { ForceOptions } from "./command";
+import { getPaths, writeFile } from "../cli-helpers.js";
 
 export const tasks = (options: ForceOptions) => {
   const SRC_DEFER_PATH = path.join(getPaths().api.src, "jobs", "defer");
@@ -73,29 +72,28 @@ export const addDeferHelloWorldExampleTask = ({
   fs.ensureDirSync(commandPaths["SRC_DEFER_PATH"]!);
 
   const deferHelloWorldTemplate = `// the defer() helper will be used to define a background function
-  import { defer } from 'src/jobs/clients/defer'
-  import { logger } from 'src/lib/logger'
-  
-  const sleep = (seconds: number) =>
-    new Promise<void>((resolve) => {
-      setTimeout(() => {
-        resolve()
-      }, seconds)
-    })
-  
-  // a background function must be async
-  const helloWorld = async (name: string) => {
-    await sleep(10)
-    logger.info(\`Hello \${name}!\`)
-  }
-  
-  // the function must be wrapped with defer() and exported as default
-  export default defer(helloWorld, {
-    // retry: 5,
-    // concurrency: 10,
-    // maxDuration: 5 * 60 // in seconds
+import { defer } from 'src/jobs/clients/defer'
+import { logger } from 'src/lib/logger'
+
+const sleep = (seconds: number) =>
+  new Promise<void>((resolve) => {
+    setTimeout(() => {
+      resolve()
+    }, seconds)
   })
 
+// a background function must be async
+const helloWorld = async (name: string) => {
+  await sleep(10)
+  logger.info(\`Hello \${name}!\`)
+}
+
+// the function must be wrapped with defer() and exported as default
+export default defer(helloWorld, {
+  // retry: 5,
+  // concurrency: 10,
+  // maxDuration: 5 * 60 // in seconds
+})
 `;
 
   return writeFile(
@@ -115,7 +113,6 @@ export const configureDeferClient = ({
   existingFiles: "OVERWRITE" | "FAIL";
 }) => {
   const deferHelloWorldTemplate = `export { defer, addMetadata, delay, getExecution } from '@defer/client'
-
 `;
 
   return writeFile(

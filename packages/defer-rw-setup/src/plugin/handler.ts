@@ -1,8 +1,6 @@
-import * as pkg from "@redwoodjs/cli-helpers";
-const { colors } = pkg;
-
 import { tasks as setupPluginTasks } from "./tasks.js";
 import { ForceOptions } from "./command.js";
+import { colors } from "../cli-helpers.js";
 
 interface ErrorWithExitCode extends Error {
   exitCode?: number;

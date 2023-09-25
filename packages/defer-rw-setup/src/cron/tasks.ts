@@ -2,10 +2,8 @@ import path from "path";
 import { Listr } from "listr2";
 import fs from "fs-extra";
 import { camelCase } from "camel-case";
-import * as pkg from "@redwoodjs/cli-helpers";
-const { getPaths, writeFile } = pkg;
-
 import type { FunctionOptions } from "./command";
+import { getPaths, writeFile } from "../cli-helpers.js";
 
 export const tasks = (options: FunctionOptions) => {
   const PACKAGE_JSON_PATH = path.join(getPaths().api.base, "package.json");
@@ -70,12 +68,11 @@ export const createCronTask = ({
 
   const deferCronTemplate = `import { defer } from '@defer/client'
 
-  async function sendMondayNewsletter() {
-    // TODO
-  }
-  
-  export default defer.cron(sendMondayNewsletter, '0 0 * * MON')
+async function sendMondayNewsletter() {
+  // TODO
+}
 
+export default defer.cron(sendMondayNewsletter, '0 0 * * MON')
 `;
 
   return writeFile(

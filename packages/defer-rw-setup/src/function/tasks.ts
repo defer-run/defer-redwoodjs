@@ -2,10 +2,9 @@ import path from "path";
 import { Listr } from "listr2";
 import fs from "fs-extra";
 import { camelCase } from "camel-case";
-import * as pkg from "@redwoodjs/cli-helpers";
-const { getPaths, writeFile } = pkg;
 
 import type { FunctionOptions } from "./command";
+import { getPaths, writeFile } from "../cli-helpers.js";
 
 export const tasks = (options: FunctionOptions) => {
   const PACKAGE_JSON_PATH = path.join(getPaths().api.base, "package.json");
@@ -70,16 +69,15 @@ export const createBackgroundFunctionTask = ({
 
   const deferHelloWorldTemplate = `import { defer } from 'src/jobs/clients/defer'
 
-  const helloWorld = async () => {
-    // TODO
-  }
-  
-  export default defer(helloWorld, {
-    // retry: 5,
-    // concurrency: 10,
-    // maxDuration: 5 * 60 // in seconds
-  })
+const helloWorld = async () => {
+  // TODO
+}
 
+export default defer(helloWorld, {
+  // retry: 5,
+  // concurrency: 10,
+  // maxDuration: 5 * 60 // in seconds
+})
 `;
 
   return writeFile(
